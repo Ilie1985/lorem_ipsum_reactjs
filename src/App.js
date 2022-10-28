@@ -7,6 +7,19 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("hello world");
+    let amount = +count;
+
+    if (count < 0) {
+      amount = 0;
+    }
+
+    if (count > 8) {
+      amount = 8;
+    }
+
+    console.log(typeof amount);
+    setText(data.slice(0, amount));
   };
 
   return (
@@ -30,18 +43,9 @@ function App() {
       </form>
 
       <article className="lorem-text">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo,
-          laborum, dolor unde laboriosam delectus itaque voluptatum perspiciatis
-          saepe veritatis earum amet quaerat nam sit nisi inventore illum cum
-          reprehenderit est?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo,
-          laborum, dolor unde laboriosam delectus itaque voluptatum perspiciatis
-          saepe veritatis earum amet quaerat nam sit nisi inventore illum cum
-          reprehenderit est?
-        </p>
+        {text.map((item, index) => {
+          return <p key={index}>{item}</p>;
+        })}
       </article>
     </section>
   );
